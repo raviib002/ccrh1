@@ -1,0 +1,26 @@
+    {% for child in children %}
+<!-- no child pages  -->
+        {% if child.is_leaf_node %}
+            <li {% if child.selected %}class="active"{% endif %}><a href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></li>
+        {% endif %}
+<!-- /no child pages  -->
+<!-- has child pages  -->
+        {% if not child.is_leaf_node or child.ancestor %}
+            <li {% if child.selected or child.ancestor %}class="active"{% endif %}>
+                <a href="{{ child.get_absolute_url }}"> {{child.get_menu_title }}<b class="caret"></b></a>
+                <ul class="sub_menu">
+                    {% if child.get_descendants %}
+                        {% for kid in child.get_descendants %}
+                            <li {% if kid.selected %}class="active"{% endif %}>
+                                <a href="{{ kid.get_absolute_url }}">
+                                    {{kid.get_menu_title }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    {% endif %}
+                </ul>
+            </li>
+        {% endif %}
+<!-- /has child pages  -->
+    {% endfor %} 
+<!-- /end for child -->

@@ -1,0 +1,90 @@
+{% load i18n staticfiles %}
+<!-- {% if 'registration_step' in request.path %}
+     <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <h2>Create New Account</h2>
+        <div class="choose_your_role">
+            <div class="role_container">
+                <div class="steps active d-flex">
+                    <div class="steps1">
+                        <span>01</span>
+                    </div>
+                    <p>Select your Role Here</p>
+                </div>
+                <div class="steps d-flex">
+                    <div class="steps1">
+                        <span>02</span>
+                    </div>
+                    <p>Add ypur Details</p>
+                </div>
+                <div class="steps d-flex">
+                    <div class="steps1">
+                        <span>03</span>
+                    </div>
+                    <p>Upload Document</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %} -->
+
+{% if 'profile_info' in request.path %}
+  <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h2>Create New Account</h2>
+            <div class="choose_your_role">
+                <div class="role_container">
+                    <div class="steps active selected d-flex">
+                        <div class="steps1">
+                            <span><img src="{% static "images/tick_mark.svg" %}" alt="tick mark"></span>
+                        </div>
+                        <p>Select your Role Here</p>
+                    </div>
+                    <div class="steps active d-flex">
+                        <div class="steps1">
+                            <span>02</span>
+                        </div>
+                        <p>Add your Details</p>
+                    </div>
+                    <div class="steps d-flex">
+                        <div class="steps1">
+                            <span>03</span>
+                        </div>
+                        <p>Upload Document</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% if 'documentation_upload' in request.path %}
+ <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <h2>Create New Account</h2>
+        <div class="choose_your_role">
+            <div class="role_container">
+                <div class="steps active selected d-flex">
+                    <div class="steps1">
+                        <span><img src="{% static "images/tick_mark.svg" %}" alt="tick mark"></span>
+                    </div>
+                    <p>Select your Role Here</p>
+                </div>
+                <div class="steps active selected d-flex">
+                    <div class="steps1">
+                        <span><img src="{% static "images/tick_mark.svg" %}" alt="tick mark"></span>
+                    </div>
+                    <p>Add your Details</p>
+                </div>
+                <div class="steps active selected d-flex">
+                    <div class="steps1">
+                        <span><img src="{% static "images/tick_mark.svg" %}" alt="tick mark"></span>
+                    </div>
+                    <p>Upload Document</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

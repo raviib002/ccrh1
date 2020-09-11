@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% block content %}
+
+     <div class="create_new_acc_sec">
+                    <form id="profile_info" class="login_form_container"  action="{% url 'user_profile:profile_info' %}" method="post">{% csrf_token %}
+                                <div class="select_option">
+                                    <div class="form_container">
+                                     <div class="col-12">
+                                                    <h3> Welcome to CCRH Portal Your Registration Was Successfully Done. Your Email Id and Password Sended to your EMail.</h3></br>
+                                                    Login to yout portal click on   <a class="" href="{% url 'user_profile:login' %}" >Link </a>
+                                    </div>
+                                </div>
+                        </div>
+                        </form>
+                        </div>
+{% endblock %}
+{% block custom-js %}
+  
+{% endblock %}        

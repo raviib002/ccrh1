@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% block content %}
+<!-- banner starts -->
+            <div class="banner_section1 create_section">
+                <div class="create_new_acc_sec">
+                    <form id="profile_info" class="login_form_container"  action="{% url 'user_profile:profile_info' %}" method="post">{% csrf_token %}
+                      {% include "user_profile/registration_header_file.html" %}
+                                <div class="select_option">
+                                    <div class="form_container">
+                                     <div class="col-12">
+                                        <div class="login_form">
+                                             {% if message %}<div class="alert alert-danger" role="alert">
+                                                 {{ message }}</div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-3 col-lg-3">
+                                                <div class="form-group">
+                                                   <label>{% trans 'First Name' %}<em>*</em></label>
+                                                   <input type="text" placeholder="" class="form-control" value="{% if first_name %}{{first_name}}{% endif %}" name="first_name">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3 col-lg-3">
+                                                <div class="form-group">
+                                                    <label>{% trans 'Last Name' %}</label>
+                                                    <input type="text" placeholder="" class="form-control" value="{% if last_name %}{{last_name}}{% endif %}" name="last_name">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3 col-lg-3">
+                                                <div class="form-group">
+                                                     <label>{% trans 'Middle Name' %}</label>
+                                                    <input type="text" placeholder="" class="form-control" value="{% if middle_name %}{{middle_name}}{% endif %}" name="middle_name">
+                                                </div>
+                                            </div>
+                                               <div class="col-sm-12 col-md-3 col-lg-3">
+                                                  <div class="form-group ">
+                                                    <label>{{ form.mobile_no.label }} <em>*</em></label>
+                                                    {{ form.mobile_no }}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3 col-lg-3">
+                                                <div class="form-group">
+                                                     <label>{% trans 'Email' %} <em>*</em></label>
+                                                    <input type="text" placeholder="" class="form-control" value="{% if email %}{{email}}{% endif %}" name="email">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3 col-lg-3">
+                                                <div class="form-group">
+                                                    <label>{% trans 'City' %}</label>
+                                                    <select class="form-control" name="city_name">
+                                                        <option value="">Please Select City</option>
+                                                        {% for i in city %}
+                                                            <option value="{{i.id}}" {% if city_id == i.id %}selected{% endif %}>{{i.city_name}}</option>
+                                                        {% endfor %}
+                                                    </select>                                                
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3 col-lg-3">
+                                                <div class="form-group">
+                                                    <label>{% trans 'State' %}</label>
+                                                    <select class="form-control" name="state_name">
+                                                        <option value="">Please Select State</option>
+                                                        {% for i in state %}
+                                                            <option value="{{i.id}}"{% if state_id == i.id %}selected{% endif %}>{{i.state_name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-3 col-lg-3">
+                                               <div class="form-group ">
+                                                    <label>{{ form.pincode.label }}</label>
+                                                    {{ form.pincode }}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group ">
+                                                    <label>{{ form.address_line1.label }}</label>
+                                                    {{ form.address_line1 }}
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group ">
+                                                    <label>{{ form.address_line2.label }}</label>
+                                                    {{ form.address_line2 }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="group_id" value="{{group_id}}">
+                                    <!-- <input type="hidden" name="sesion_group_id" value="{{sesion_group_id}}"> -->
+                                     <!-- <input type="hidden" name="mbl_group_id" value="{{mbl_group_id}}"> -->
+                                    <div class="continue_button">
+                                    <button class="go_back" onclick="location.href='{% url 'user_profile:registration_step' %}'" type="button">Go Back </button>
+                                    <button class="next"  type="submit">Finish </button>
+                                    </div>
+                                </div>
+                    </form>
+                </div>
+            </div>
+        <!-- banner ends -->
+{% endblock %}
+{% block jsfilesurls %}
+<script type="text/javascript" src="{% static 'js/validation.js'%}"></script>
+{% endblock %}
+{% block custom-js %}
+    /********* Based on the tab index adding class of active - starts *******/
+$('button').focus(function() {
+    $("button").removeClass("active");
+    $("this").addClass("active");
+    });
+    
+{% endblock %}        

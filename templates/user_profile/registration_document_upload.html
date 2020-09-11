@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% block content %}
+<!-- banner starts -->
+<!-- banner starts -->
+            <div class="banner_section1 create_section">
+                <div class="create_new_acc_sec">
+                    <form class="login_form_container">
+                       {% include "user_profile/registration_header_file.html" %}
+                                <div class="select_option">
+                                    <div class="form_container">
+                                        <div class="row">
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <label>{% trans 'Registration Body' %}</label>
+                                                    <select class="form-control">
+                                                        <option>CCRH</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <label> {% trans 'Registration No' %}</label>
+                                                   <input type="text" placeholder="" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="ol-sm-12 col-md-12 col-lg-12">
+                                                <div class="form-group drag_drop_conatiner">
+                                                    <p>{% trans 'Registration Certificate' %}</p>
+                                                    <div class="drag_drop">
+                                                        <div class="drop_content">
+                                                            <img src="{% static "images/drag_drop.svg" %}"
+                                                                alt="you can drag an drop the content">
+                                                            <span>{% trans 'Drag and drop or' %} <a href="#">{% trans 'Browse' %}</a> {% trans 'your
+                                                                files' %}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ol-sm-12 col-md-12 col-lg-12">
+                                                <div class="form-group">
+                                                    <label>{% trans 'Type of Clinical Setting' %}</label>
+                                                    <div class="type_clinical_block">
+                                                        <label class="check_form">
+                                                            <input type="checkbox" class="addcase_checkbox"><span
+                                                                class="add_check"></span><span>{% trans 'Government Dispensary' %}</span>
+                                                        </label>
+                                                        <label class="check_form">
+                                                            <input type="checkbox" class="addcase_checkbox"><span
+                                                                class="add_check"></span><span>{% trans 'Government Hospital' %}</span>
+                                                        </label>
+                                                        <label class="check_form">
+                                                            <input type="checkbox" class="addcase_checkbox"><span
+                                                                class="add_check"></span><span>{% trans 'Private Hospital' %}</span>
+                                                        </label>
+                                                        <label class="check_form">
+                                                            <input type="checkbox" class="addcase_checkbox"><span
+                                                                class="add_check"></span><span>{% trans 'Research Institute' %}</span>
+                                                        </label>
+                                                        <label class="check_form">
+                                                            <input type="checkbox" class="addcase_checkbox"><span
+                                                                class="add_check"></span><span>{% trans 'Research Institute' %}</span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ol-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <label>{% trans 'Clinical Setting' %}</label>
+                                                    <select class="form-control">
+                                                        <option>01</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <label>{% trans 'Clinic Name' %}</label>
+                                                    <input type="text" placeholder="" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <label>{% trans 'Clinic Address1' %}</label>
+                                                    <input type="text" placeholder="" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-group">
+                                                    <label>{% trans 'Clinic Address2' %}</label>
+                                                    <input type="text" placeholder="" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="continue_button">
+                                        <button class="go_back" onclick="location.href='{% url 'user_profile:profile_info' %}'" type="button">Go Back </button>
+                                        <button class="next">Finish</button>
+                                    </div>
+                                </div>
+                    </form>
+                </div>
+            </div>
+        <!-- banner ends -->
+{% endblock %}
+{% block custom-js %}
+
+{% endblock %}    

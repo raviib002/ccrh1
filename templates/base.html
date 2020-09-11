@@ -1,0 +1,296 @@
+{% load i18n staticfiles cms_tags cms_static sekizai_tags common_templatetags page_meta_tags %}
+{% page_meta request.current_page as page_meta %}
+<!doctype html>
+<html>
+    <head>
+        {% include 'djangocms_page_meta/meta.html' with meta=page_meta %}
+        {% render_block "css" %}
+        <title>{% block title %}{% trans "CCRH" %}{% endblock %}</title>
+        {% include "cssfiles.html" %}
+        {% render_block "css" %}
+        {% block staticurls %}
+            <link rel="stylesheet" href="{% static_with_version 'cms/css/cms.base.css' %}">
+            <link rel="stylesheet" href="{% static_with_version 'cms/css/cms.welcome.css' %}">
+        {% endblock %}
+    </head>
+<body class="login_blk">
+    {% include "header.html" %}
+    <div class="main_section">
+        <main>
+            <nav class="navbar_link">
+                <div class="container d-flex justify-content-between">
+                    <ul class="navigation list-unstyled justify-content-between">
+                        {% load menu_tags %}
+                        {% show_menu 0 100 100 100 "custome_cms_menu/menu.html" %}
+                    </ul>
+                    <ul class="navigation2 list-unstyled d-flex">
+                        <li><a id="base_login" class="login"  data-toggle="modal" data-target="#loginVisitorPage">{% trans 'Login' %}</a></li>
+                    </ul>
+                </div>
+            </nav>
+            {% cms_toolbar %}
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+    <!-- footer section start here-->
+    <footer>
+        <div class="footer_container">
+            <div class="container">
+                <div class="navigate_sector_container">
+                    <div class="row">
+                        <div class="col-sm-3 col-md-12 col-lg-12 navigation">
+                            <div class="navigation_block footer_submenu">
+                                <div class="footer_navigation_list row">
+                                        {% load menu_tags %}
+                                        {% show_menu 0 100 100 100 "custome_cms_menu/footer_menu.html" %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-6 connnect_with_us">
+                            <div class="navigation_block2">
+                                <p class="navigation_section">{% trans 'Connect with Us' %}</p>
+                                <ul class="list-unstyled">
+                                    <li class="address">
+                                        <p class="sub_heading">{% trans 'CCRH HEADQUARTERS' %}</p><span> 61-65, Institutional
+                                            Area, <br> Janakpuri, New Delhi - 110058, India</span>
+                                    </li>
+                                    <li>
+                                        <p>{% trans 'Telephone' %} :</p>&nbsp;&nbsp;<span>91-11-28525523, 28521162</span>
+                                    </li>
+                                    <li>
+                                        <p>{% trans 'Fax' %} :</p>&nbsp;&nbsp;<span> 91-11-28521060, 28521162</span>
+                                    </li>
+                                    <li>
+                                        <p>{% trans 'E-mail' %} :</p>&nbsp;&nbsp; <span>ccrhindia@gmail.com</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-3 col-lg-3 d-flex">
+                            <div class="footer_update">
+                                <span>Last Updated: {{ request.current_page.creation_date|date:"F d, Y" }}</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-3 col-lg-3 social_media_container">
+                            <div class="social_media_icons">
+                                <ul class="list-unstyled">
+                                    <li><a href="#"><img src={% static "images/footer_twitter.svg" %} alt="footer_twitter"></a></li>
+                                    <li><a href="#"><img src={% static "images/footer_facebook.svg" %} alt="facebook"></a></li>
+                                    <li><a href="#"><img src={% static "images/footer_youtube.svg" %} alt="footer_youtube"></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="container">
+                <div class="help_line">
+                    <p>
+                        <a href="#">{% trans 'Accessibility Option' %} </a>|
+                        <a href="#">{% trans 'Sitemap' %} </a>|
+                        <a href="#">{% trans 'Disclaimer' %} </a>|
+                        <a href="#">{% trans 'Copyright Policy' %} </a>|
+                        <a href="#">{% trans 'Terms & Conditions' %} </a>|
+                        <a href="#">{% trans 'Privacy Policy' %} </a>|
+                        <a href="#">{% trans 'Hyper Linking Policy' %} </a>|
+                        <a href="#">{% trans 'Help' %} </a>
+                    </p>
+                    <p>{% trans 'Central Council for Research in Homoeopathy. Ministry of AYUSH, Govt. of India' %}</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    {% include "jsfiles.html" %}
+    
+    
+     <!--modal for displaying messages - starts -->
+     <div class="modal fade modal-bgcolor1" id="suc_msg_popup" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header forget-link-header1">
+                    <button class="link1 close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body forget-link-body1">
+                    <div class="row">
+                    <p id="suc_msg" class="para-link-center p1"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+     <!-- Forgot success popup starts-->
+     <div class="modal fade registration_steps_page regis_success_page" role="dialog" id="rgistrationSuccess">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="login_container registration_container">
+                        <img src="{% static 'images/Check_Mark.svg' %}" alt="check images">
+                        <h2>{% trans 'Thank You!' %}</h2>
+                        <p id="success_message"></p>
+                        <button type="button" onclick="window.location.reload()" id="ok_id" class="ok">Ok</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Forgot success popup ends -->
+    
+    <!-- modal for displaying messages - Ends -->
+    {% include 'user_profile/login.html' %}
+    {% include 'user_profile/forget_password.html' %}
+</body>
+
+{% render_block "js" %}
+{% block jsfilesurls %}{% endblock %}
+<script type="text/javascript" src="{% static 'js/validation.js'%}"></script>
+<script type="text/javascript">
+        $(document).ready(function() {
+            {% block custom-js %}{% endblock %}
+            
+            //AJAX call for login popup - Starts
+            $(document.body).on('click',"#id_login",function(){
+                var form = $("#logn_form").valid();
+                if(form){
+    	            var Url = "{% url 'user_profile:check_user_existance' %}";
+    	            var username = $("input[name=username]").val();
+    	            var password = $("input[name=password]").val();
+    	            $.ajax({
+    	                type:'POST',
+    	                url:Url,
+    	                dataType: 'json',
+    	                data: {username : username, password : password },
+    	                success: function(data){
+                            if (data) {
+                                var aa = JSON.stringify(data);
+                                var a = JSON.parse(aa);
+                                if (a.message){
+                                    $("#alert_message").html(a.message);
+                                    $("#alert_message").css("display", "block");
+                                    return false;
+                                }
+                                if (a.user_existance_in_app == 'both'){
+                                    $("#action_url_id").val(a.case_action_url);
+                                    $("#loginRole").modal();
+                                }else {
+                                    if(a.user_existance_in_app == 'case_history'){
+                                        app_submit(a.user_existance_in_app, a.case_action_url)
+                                    }
+                                    else if(a.user_existance_in_app == 'ccrh'){
+                                        app_submit(a.user_existance_in_app, a.case_action_url)
+                                    }
+                                }
+                            }
+                        },
+                        error: function(){
+                            $('#alert_message').html("Failed to submit data");
+                            $("#alert_message").css("display", "block");
+                        }
+    	            });
+                }
+	        });
+	        //AJAX call for login popup - Ends
+	        
+	        //Based on App selection or user existance submitting form to App - Start
+	        $(".app_type_submit").on('click', function(){
+                app_type = $(".options.active").data('info');
+                app_url = $("input[name=action_url]").val()
+                app_submit(app_type, app_url);
+            });
+               
+            function app_submit(app_type, app_url){
+                if(app_type=='case_history'){
+                    $('#logn_form').attr('action', app_url);
+                }
+                if(app_type=='ccrh'){
+                    $('#logn_form').attr('action', '{% url 'user_profile:login' %}');
+                }
+                document.logn_form.submit();
+            }
+            //Based on App selection or user existance submitting form to App - Ends
+            
+            //Reset validation messages after close Bootstrap login modal --Starts
+            $('#loginVisitorPage').on('hidden.bs.modal', function() {
+                var $alertas = $('#logn_form');
+                $alertas.validate().resetForm();
+                $(this).find("input,select").val('').end();
+                $alertas.find('.error').removeClass('error');
+                $('#alert_message').css("display", "none");
+            })
+            //Reset validation messages after close Bootstrap login modal --Starts
+            
+            /********* Showing & Hiding Password on click - starts *******/
+            $(document.body).on('click',".show_password",function(){
+                var x = document.getElementById("password");
+                if (x.type === "password") {
+                    x.type = "text";
+                } else {
+                    x.type = "password";
+                }
+            });
+            /********* Showing & Hiding Password on click - ends *******/
+            
+            //AJAX call for forget password popup - Starts
+            $(document.body).on('click',"#reset_password_id",function(){
+                var form = $("#forgt_pswd_form").valid();
+                if(form){
+                    var Url = "{% url 'user_profile:password_forgot' %}";
+                    var email = $("input[name=email]").val();
+                    $.ajax({
+                        type:'POST',
+                        url:Url,
+                        dataType: 'json',
+                        data: {email : email, csrfmiddlewaretoken: '{{ csrf_token }}' },
+                        success: function(data){
+                            if (data) {
+                                var aa = JSON.stringify(data);
+                                var a = JSON.parse(aa);
+                                if (a.error_email){
+                                    $('#error_message').html(a.error_email);
+                                    $("#error_message").css("display", "block");
+                                    return false;
+                                }
+                                if (a.success){
+                                    $('#ForgetPasswordPage').remove();
+                                    $('#rgistrationSuccess').modal();
+                                    $('#success_message').text(a.success);
+                                }
+                            }
+                        },
+                        error: function(){
+                            $('#error_message').html("Failed to submit data");
+                            $("#error_message").css("display", "block");
+                        }
+                    });
+                }
+            }); 
+            //AJAX call for forget password popup - Ends
+            
+            //Reset validation messages after close Bootstrap forget password modal --Starts
+            $("#ForgetPasswordPage").on('hide.bs.modal', function(){
+                var $alertas = $('#forgt_pswd_form');
+                $(this).find("input").val('').end();
+                $alertas.find('.error').removeClass('error');
+                $('#error_message').remove();
+                $('#id_email-error').remove();
+            }); 
+            //Reset validation messages after close Bootstrap forget password modal --Starts
+            
+            //To disable default form submission based on enter starts here
+            $(document).ready(function() {
+                $(window).keydown(function(event){
+                if(event.keyCode == 13) {
+                        event.preventDefault();
+                        return false;
+                    }
+                });
+            })
+            //To disable default form submission based on enter starts here
+        });
+</script>
+</html>

@@ -1,0 +1,132 @@
+{% load i18n staticfiles common_templatetags %}
+
+    <!-- modal login role starts -->
+    <div class="modal fade" role="dialog" id="loginVisitorPage">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="login_container">
+                        <div class="row login-row">
+                            <div class="col-sm-12 col-md-5 col-lg-5 login_page_image d-flex">
+                                <div class="login_image">
+                                    <div class="overlay"></div>
+                                    <div class="login_page_left">
+                                        <h2 class="heading">{% trans 'Create New Account' %}</h2>
+                                        <button class="register"><span><a href="{% settings_value "CASE_HISTORY_REGISTRATION_URL" %}">{% trans 'Register Here' %}</a></span></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-7 col-lg-7 login_page_right d-flex">
+                                <form id="logn_form" name="logn_form" action="{% url 'user_profile:check_user_existance' %}" class="loginVisitor_form_container" method="post">{% csrf_token %}
+                                    <ul class="login_list  nav nav-tabs">
+                                        <li><a class="active" id="loginPagetab"   href="#loginPage" data-toggle="tab"
+                                            aria-controls="loginPage" role="tablist">{% trans 'User Login' %}</a>
+                                        </li>
+                                        <li><a id="visitorPageTab" href="javascript:void(0);" role="tablist">{% trans 'Visitor Login' %}</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade show active tab_container" id="loginPage">
+                                            <div id="alert_message" class="alert alert-danger" role="alert" style="display: none;"></div>
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="email">{% trans 'Email' %}</label>
+                                                        <input type="text" name="username" class="form-control lowercase" placeholder="Login with your email" maxlength="254" required="">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="password">{% trans 'Password' %}</label>
+                                                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required="">
+                                                        <span class="eye_icon "><img class="show_password" src={% static "images/eye.svg" %} alt="press the eye password"></span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12">
+                                                    <button type="button" id="id_login" class="login">{% trans 'Login' %}</button>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12">
+                                                    <a href="#" class="forget_pwd" data-toggle="modal" data-target="#ForgetPasswordPage" data-dismiss="modal">{% trans 'Forgot Password?' %}</a>
+                                                    <!-- <a href="{% url 'user_profile:password_forgot' %}" class="forget_pwd forget_password">{% trans 'Forgot Password?' %}</a> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade  tab_container" id="visitorPage">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="email">{% trans 'Email' %}</label>
+                                                        <input type="text" class="form-control" id="email" placeholder="Enter your register email id">
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12">
+                                                    <button type="button" class="login">{% trans 'Login' %}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- modal login role ends -->
+    
+    
+    <!-- Application Type selection popup -->
+    <div class="modal fade" role="dialog" id="loginRole">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>{% trans 'Login App' %}</h2>
+                    <span>{% trans 'Choose App type' %}</span>
+                    <button class="close" data-dismiss="modal" aria-label="close">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="login_container">
+                        <div class="options active" data-info="case_history">
+                            <div class="option_block">
+                                <img src={% static "images/tick.svg" %} class="tick_mark" alt="if you click the field the tick will appear">
+                                <span><svg xmlns="http://www.w3.org/2000/svg" width="18.913" height="18.913" viewBox="0 0 18.913 18.913">
+                                        <g transform="translate(0)">
+                                            <path class="a" d="M16.143,12.226A9.42,9.42,0,0,0,12.55,9.972a5.467,5.467,0,1,0-6.187,0A9.471,9.471,0,0,0,0,18.913H1.478a7.979,7.979,0,1,1,15.958,0h1.478A9.4,9.4,0,0,0,16.143,12.226ZM9.457,9.457a3.989,3.989,0,1,1,3.989-3.989A3.994,3.994,0,0,1,9.457,9.457Z" transform="translate(0)" />
+                                        </g>
+                                    </svg></span>
+                                <span>{% trans 'CASE HISTORY' %}</span>
+                            </div>
+                        </div>
+                        <div class="options" data-info="ccrh">
+                            <div class="option_block">
+                                <img src={% static "images/tick.svg" %} class="tick_mark" alt="if you click the field the tick will appear">
+                                <span><svg xmlns="http://www.w3.org/2000/svg" width="20.425" height="23.864" viewBox="0 0 20.425 23.864">
+                                        <defs> <style> .a { fill: #191919; } </style> </defs>
+                                        <g transform="translate(-24.882)">
+                                            <g transform="translate(24.882)">
+                                                <path class="a" d="M44.506.8A2.674,2.674,0,0,0,42.6,0H27.591a2.674,2.674,0,0,0-1.907.8,2.674,2.674,0,0,0-.8,1.907v14.98a2.674,2.674,0,0,0,.8,1.907,2.768,2.768,0,0,0,1.907.774h3.731L32.4,21.7l.028.028,1.244,1.52a1.732,1.732,0,0,0,1.023.58,2.123,2.123,0,0,0,1.161-.111,1.489,1.489,0,0,0,.359-.193,1.788,1.788,0,0,0,.249-.221l.055-.055,1.244-1.52.028-.028,1.078-1.327H42.6a2.737,2.737,0,0,0,2.709-2.709V2.709A2.674,2.674,0,0,0,44.506.8ZM43.9,17.689a1.253,1.253,0,0,1-.387.912,1.318,1.318,0,0,1-.912.387H38.508a.684.684,0,0,0-.58.3l-1.244,1.493-.028.028L35.385,22.36c-.028,0-.028.028-.055.028a.539.539,0,0,1-.359.028.66.66,0,0,1-.193-.083l-1.244-1.52-.028-.028-1.244-1.52c0-.028-.028-.028-.028-.055a.721.721,0,0,0-.58-.3H27.591a1.253,1.253,0,0,1-.912-.387,1.318,1.318,0,0,1-.387-.912V2.709h.028a1.253,1.253,0,0,1,.387-.912,1.318,1.318,0,0,1,.912-.387H42.6a1.253,1.253,0,0,1,.912.387,1.318,1.318,0,0,1,.387.912Z" transform="translate(-24.882)" />
+                                            </g>
+                                            <g transform="translate(31.432 3.372)">
+                                                <path class="a" d="M125.9,49.85a3.645,3.645,0,1,0-5.141,5.169,3.733,3.733,0,0,0,2.57,1.05,3.635,3.635,0,0,0,2.57-6.219Zm-1,4.174a2.239,2.239,0,0,1-3.814-1.575,2.354,2.354,0,0,1,.663-1.575,2.228,2.228,0,1,1,3.151,3.151Z" transform="translate(-119.682 -48.8)" />
+                                            </g>
+                                            <g transform="translate(28.142 11.028)">
+                                                <path class="a" d="M83.807,160.816a10.008,10.008,0,0,0-9.563,0,3.988,3.988,0,0,0-2.183,3.289v.663a.691.691,0,0,0,.691.719H85.272a.714.714,0,0,0,.719-.719v-.663A3.917,3.917,0,0,0,83.807,160.816Zm-10.365,3.261a2.731,2.731,0,0,1,1.493-2.045,8.582,8.582,0,0,1,8.126,0,2.665,2.665,0,0,1,1.493,2.045Z" transform="translate(-72.059 -159.6)" />
+                                            </g>
+                                        </g>
+                                    </svg></span>
+                                <span>{% trans 'CCRH' %}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="continue_button">
+                        <input type="hidden" name="action_url" id="action_url_id" value="">
+                        <button class="app_type_submit">{% trans 'Continue' %}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Application Type selection popup -->

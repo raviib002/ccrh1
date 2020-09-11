@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load i18n staticfiles cms_tags cms_static sekizai_tags %}
+{% block content %} 
+    <div class="aboutus_banner">
+        <div class="overlay"></div>
+        {% placeholder "Banner Section" %}
+    </div>
+    
+    <div class="aboutus_container">
+        <div class="patient_container">
+            <div class="row">
+                <div class="col sm-12 col-md-12 col-lg-12">
+                    <div class="about_us_block">
+                        {% placeholder "Content Section" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

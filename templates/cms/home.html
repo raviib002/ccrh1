@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+{% load i18n staticfiles cms_tags cms_static sekizai_tags %}
+{% block content %} 
+<div class="homepage_main_sec">
+    <div class="banner_main_section banner_sec">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-9 com-lg-9 d-flex">
+                    <div id="banner_demo" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                           {% placeholder "Banner Images" %}
+                        </div>
+                        <a class="carousel-control-prev" href="#banner_demo" role="button" data-slide="prev">
+                            <span><svg xmlns="http://www.w3.org/2000/svg" width="18.361" height="33.998" viewBox="0 0 18.361 33.998">
+                                <defs><style>
+                                        .a {
+                                            fill: #004976;
+                                        }
+                                </style></defs>
+                                <g transform="translate(0)">
+                                    <g transform="translate(0 0)">
+                                        <path class="a" d="M118.13,16.066,133.855.385a1.318,1.318,0,0,1,1.861,1.866L120.927,17l14.79,14.748a1.318,1.318,0,0,1-1.862,1.866L118.13,17.932a1.317,1.317,0,0,1,0-1.866Z" transform="translate(-117.742 0)" />
+                                    </g>
+                                </g>
+                            </svg></span>
+                        </a>
+                        <a class="carousel-control-next" href="#banner_demo" role="button" data-slide="next">
+                            <span class="right_arrow"><svg xmlns="http://www.w3.org/2000/svg" width="18.361" height="33.998" viewBox="0 0 18.361 33.998">
+                                <defs><style>
+                                        .a {
+                                            fill: #004976;
+                                        }
+                                </style></defs>
+                                <g transform="translate(0)">
+                                    <g transform="translate(0 0)">
+                                        <path class="a" d="M118.13,16.066,133.855.385a1.318,1.318,0,0,1,1.861,1.866L120.927,17l14.79,14.748a1.318,1.318,0,0,1-1.862,1.866L118.13,17.932a1.317,1.317,0,0,1,0-1.866Z" transform="translate(-117.742 0)" />
+                                    </g>
+                                </g>
+                            </svg></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3 d-flex">
+                    <div class="aboutus_home_conatiner">
+                        {% placeholder "Banner Content" %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- clinical case Registry section -->
+    <div class="clinical_case_registry_section" id="clinical_case_registry_section">
+        <div class="container">
+            <dic class="row">
+                <div class="col-sm-12 col-md-3 col-lg-3 d-flex">
+                    <div class="registry_heading d-flex">
+                        {% placeholder "Clinical Case Registry Heading" %}
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <div class="regitry_para">
+                        {% placeholder "Clinical Case Registry Content" %}
+                    </div>
+                </div>
+            </dic>
+        </div>
+    </div>
+    <!-- clinical case Registry section - ends -->
+    
+    <!-- case reports section -->
+    {% include 'cms/case_report.html' %}
+    <!-- case reports section end here-->
+    
+        <!-- browse case report and write the case report section   -->
+        <div class="case_report_browse_write_sec">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-8 col-lg-8 d-flex">
+                        <div class="browse_case_report">
+                            <h2>Browse by case report</h2>
+                            <div class="browse_tab_content">
+                                <ul class="browse_list nav nav-tabs ">
+                                    <li> <a class="active" id="navSpeciality" href="#speciality" data-toggle="tab" aria-controls="speciality" aria-selected="true">speciality</a> </li>
+                                    <li> <a href="#latestContent" id="navLatestContent" data-toggle="tab" aria-controls="latestContent" aria-selected="false">latest content</a> </li>
+                                    <li> <a href="#browseVideos" id="navBrowseVideo" data-toggle="tab" aria-controls="browseVideos" aria-selected="false">Videos</a> </li>
+                                    <li> <a href="#browseImages" id="navbrowseImage" data-toggle="tab" aria-controls="browseImages" aria-selected="false">Images</a> </li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active" role="tabpanel" id="speciality"
+                                        aria-labelledby="navSpeciality">
+                                        <ul class="speciality_block">
+                                            <li>
+                                                <img src={% static "images/neurology_image.png" %} alt="neurology image">
+                                                <span>neurology</span>
+                                            </li>
+                                            <li>
+                                                <img src={% static "images/gynecology_image.png" %} alt="gynaecology image">
+                                                <span>gynaecology</span>
+                                            </li>
+                                            <li>
+                                                <img src={% static "images/hepatology_image.png" %} alt="Hepatology image">
+                                                <span>Hepatology</span>
+                                            </li>
+                                            <li>
+                                                <img src={% static "images/respiratory_image.png" %} alt="RESPIRATORY MEDICINE image">
+                                                <span>respiratory medicine</span>
+                                            </li>
+                                            <li>
+                                                <img src={% static "images/cardiovascular_image.png" %} alt="CARDIOVASCULAR MEDICINE image">
+                                                <span>cardiovascular medicine</span>
+                                            </li>
+                                            <li>
+                                                <img src={% static "images/gastroentrology_image.png" %} alt="GASTROENTEROLOGY image">
+                                                <span>gastroenterology</span>
+                                            </li>
+                                            <li>
+                                                <img src={% static "images/opthalogy_image.png" %} alt="OPTHALMOLOGY image">
+                                                <span>opthalmology</span>
+                                            </li>
+                                            <li>
+                                                <img src={% static "images/orthopeadics_image.png" %} alt="OrthoPeadics image">
+                                                <span>OrthoPeadics</span>
+                                            </li>
+                                            <li>
+                                                <img src={% static "images/urology_image.png" %} alt="Urology image">
+                                                <span>Urology</span>
+                                            </li>
+                                        </ul>
+                                        <button class="viewall">View All</button>
+                                    </div>
+                                    <div class="tab-pane fade" role="tabpanel" id="latestContent"
+                                        aria-labelledby="navLatestContent">
+                                        <ul class="speciality_block">
+                                            <li>
+                                                <img src={% static "images/comment.svg" %} alt="neurology image">
+                                                <span>NEUROLOGY</span>
+                                            </li>
+                                            <li>
+                                                <img src={% static "images/comment.svg" %} alt="gynaecology image">
+                                                <span>gynaecology</span>
+                                            </li>
+                                            <li>
+                                                <img src={% static "images/comment.svg" %} alt="Hepatology image">
+                                                <span>Hepatology</span>
+                                            </li>
+                                        </ul>
+                                        <button class="viewall">View All</button>
+                                    </div>
+                                    <div class="tab-pane fade" role="tabpanel" id="browseVideos"
+                                        aria-labelledby="navBrowseVideo">
+                                        <ul class="speciality_block">
+                                            <li>
+                                                <img src={% static "images/comment.svg" %} alt="neurology image">
+                                                <span>NEUROLOGY</span>
+                                            </li>
+                                            <li>
+                                                <img src={% static "images/comment.svg" %} alt="gynaecology image">
+                                                <span>gynaecology</span>
+                                            </li>
+                                            <li>
+                                                <img src={% static "images/comment.svg" %} alt="Hepatology image">
+                                                <span>Hepatology</span>
+                                            </li>
+                                        </ul>
+                                        <button class="viewall">View All</button>
+                                    </div>
+                                    <div class="tab-pane fade" role="tabpanel" id="browseImages"
+                                        aria-labelledby="navbrowseImage">
+                                        <ul class="speciality_block">
+                                            <li>
+                                                <img src={% static "images/comment.svg" %} alt="neurology image">
+                                                <span>NEUROLOGY</span>
+                                            </li>
+                                            <li>
+                                                <img src={% static "images/comment.svg" %} alt="gynaecology image">
+                                                <span>gynaecology</span>
+                                            </li>
+                                            <li>
+                                                <img src={% static "images/comment.svg" %} alt="Hepatology image">
+                                                <span>Hepatology</span>
+                                            </li>
+                                        </ul>
+                                        <button class="viewall">View All</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-g-4 d-flex">
+                        <div class="write_case_report_block" id="writeCaseReport">
+                            {% placeholder "How to write a case report Section" %}
+                            <a href="javaScript:void(0);" class="view_all">View All</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- browse case report and write the case report section -ends   -->
+        
+        <!-- case registered / Graph section -->
+        {% include 'cms/case_graph_data.html' %}
+        <!-- case registered / Graph section ends here -->
+        
+        <!-- logo section starts -->
+        <div class="image_block_div">
+            <div class="container">
+                <ul class="image_section">
+                {% placeholder "Logo Section" %}
+                </ul>
+            </div>
+        </div>
+        <!-- logo section ends -->
+{% endblock %}

@@ -1,0 +1,45 @@
+
+{% load i18n staticfiles cms_tags cms_static sekizai_tags common_templatetags page_meta_tags %}
+
+{% for child in children %}
+<!-- has child pages  -->
+        {% if not child.is_leaf_node or child.ancestor %}
+            <div class="col-sm-6 col-md-3 col-lg-3">
+                <div class="aboutus_footer">
+                    <p><a href="{{ child.get_absolute_url }}"> {{child.get_menu_title }}<b class="caret"></b></a></p>
+                    <ul class="list-unstyled footer_menu items">
+                        {% if child.get_descendants %}
+                            {% for kid in child.get_descendants %}
+                                <li class="item">
+                                    <a href="{{ kid.get_absolute_url }}">
+                                        {{kid.get_menu_title }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                    {# if child.get_descendants|length > 4 #}
+                        <!-- <div><a href="javascript:void(0);"  class="showMore"></a></div> -->
+                    {# endif #}
+                </div>
+            </div>
+        {% endif %}
+<!-- /has child pages  -->
+    {% endfor %} 
+<!-- /end for child -->
+<!-- </div> -->
+<div class="col-sm-6 col-md-3 col-lg-3">
+    <div class="aboutus_footer">
+    <p><a href='/en/data-and-tools'>{% trans 'Data and Tools' %}</a></p>
+    <p><a href='/en/e-tutorials'>{% trans 'E-Tutorials' %}</a></p>
+    <p><a href='/en/contact-us'>{% trans 'Contact Us' %}</a></p>
+    <p><a href='/en/website-policies'>{% trans 'Website Policies' %}</a></p>
+    {% for child in children %}
+<!-- no child pages  -->
+        {% if child.is_leaf_node and child.get_menu_title != 'Home' %}
+            <p><a href="{{ child.get_absolute_url }}">{{child.get_menu_title }}</a></p>
+        {% endif %}
+<!-- /no child pages  -->
+{% endfor %} 
+</div>
+</div>
