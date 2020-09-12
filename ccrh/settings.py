@@ -25,7 +25,7 @@ SECRET_KEY = '*ubmb)x@*m1pv15=6^l%js)j+dh0x_xug&5i9feytjxmwsz=f&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', '172.105.51.125']
+ALLOWED_HOSTS = ['ccrh.azurewebsites.net']
 SITE_ID = 1
 ADMIN_EMAIL = 'smtp@baryonssoftsolutions.com'
 # Application definition
