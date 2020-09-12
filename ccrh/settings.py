@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'djangocms_forms',
     'meta', #DJango CMS Meta tags plugin
     'djangocms_page_meta', #DJango CMS Meta tags plugin
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -116,10 +117,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'ccrhtest',
-        'USER': 'ccrhtest',
-        'PASSWORD': 'ccrhtest',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'NAME': 'ccrh',
+        'USER': 'rooot@ccrh',
+        'PASSWORD': 'Baryons@123',
+        'HOST': 'ccrh.mariadb.database.azure.com',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
@@ -273,10 +274,21 @@ SEND_MAIL_ALL_PLACE = True
 
 '''Case History API Endpoint'''
 CASE_HISTORY_API = {
-    'DOMAIN' : 'http://172.105.51.125:9000/en',
+    'DOMAIN' : 'http://ccrh.azurewebsites.net/en',
     'URL' : '/user/'
     }
-CCRH_HOME_URL = 'http://172.105.51.125:8000/en'
-CASE_HISTORY_LOGIN_URL = 'http://172.105.51.125:9000/en/user/login/'
-CASE_HISTORY_REGISTRATION_URL = 'http://172.105.51.125:9000/en/user/registration/'
+CCRH_HOME_URL = 'http://ccrh.azurewebsites.net/en'
+CASE_HISTORY_LOGIN_URL = 'http://ccrh.azurewebsites.net/en/user/login/'
+CASE_HISTORY_REGISTRATION_URL = 'http://ccrh.azurewebsites.net/en/user/registration/'
 
+# Azure Static files rendering from the Azre Storage Blob
+DEFAULT_FILE_STORAGE = 'ccrh.custom_azure.AzureMediaStorage'
+STATICFILES_STORAGE = 'ccrh.custom_azure.AzureStaticStorage'
+
+STATIC_LOCATION = "static"
+MEDIA_LOCATION = "media"
+
+AZURE_ACCOUNT_NAME = "ccrh"
+AZURE_CUSTOM_DOMAIN = f'ccrh.blob.core.windows.net'
+STATIC_URL = f'https://ccrh.blob.core.windows.net/static/'
+MEDIA_URL = f'https://ccrh.blob.core.windows.net/media/'
